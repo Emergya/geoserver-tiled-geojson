@@ -1,10 +1,11 @@
 function initMap() {
 
-
+	var serverUrl = "http://107.170.88.62:8080/";
 
 	// Centered in Quito, Ecuador
 	var map = L.map('map');
-	map.setView([-0.2298500, -78.5249500], 9)
+
+	map.setView([51.735587,0.46855], 9)
 	L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 		maxZoom: 18
@@ -26,10 +27,12 @@ function initMap() {
 	var now = moment(new Date());
 
 	$.ajax({
-		url: "http://37.139.29.45:8080/geoserver/wfs?request=GetFeature&typeName=icm_traffic&outputFormat=text/javascript&srsName=EPSG:4326&format_options=callback:gjsonCB",
-		jsonpCallback: "gjsonCB",
-		dataType: "jsonp",
-		jsonp: false,
+		//url: serverUrl + "geoserver/wfs?request=GetFeature&typeName=icm_traffic&outputFormat=text/javascript&srsName=EPSG:4326&format_options=callback:gjsonCB",
+		url: "js/mutated1.json",
+		//jsonpCallback: "gjsonCB",
+		//dataType: "jsonp",
+		dataType: "json",
+		//jsonp: false,
 		success: function(response) {
 			var features = response.features;
 
