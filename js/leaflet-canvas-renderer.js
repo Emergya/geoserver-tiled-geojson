@@ -312,9 +312,12 @@ if (typeof(L) !== 'undefined') {
 
 
 		_isActuallyVisible: function(coords) {
+			if(!coords || !coords.length) {
+				return false;
+			}
 			var coord = coords[0];
-			var min = [coord.x, coord.y],
-				max = [coord.x, coord.y];
+			
+			var min = [coord.x, coord.y],	max = [coord.x, coord.y];
 			for (var i = 1; i < coords.length; i++) {
 				coord = coords[i];
 				min[0] = Math.min(min[0], coord.x);
